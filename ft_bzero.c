@@ -1,26 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oyayoi <oyayoi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/30 09:37:33 by okamotoyayo       #+#    #+#             */
-/*   Updated: 2024/05/03 12:17:36 by oyayoi           ###   ########.fr       */
+/*   Created: 2024/04/17 19:51:14 by oyayoi            #+#    #+#             */
+/*   Updated: 2024/04/28 18:05:20 by oyayoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+void	ft_bzero(void *s, size_t n)
 {
-	char	*str;
-	int		i;
+	unsigned char	*p;
 
-	i = ft_strlen(s1);
-	str = (char *)malloc(sizeof(char) * (i + 1));
-	if (!str)
-		return (NULL);
-	ft_strlcpy(str, s1, i + 1);
-	return (str);
+	p = (unsigned char *)s;
+	while (n)
+	{
+		*p = 0;
+		p++;
+		n--;
+	}
 }
+
+// int	main(void)
+// {
+// 	char buf[] = "123456789";
+// 	char buf2[] = "123456789";
+
+// 	ft_bzero(buf, 5);
+// 	bzero(buf2, 5);
+// 	printf("ft_bzero:%s\n", buf);
+// 	printf("bzero:%s\n", buf2);
+// 	return (0);
+// }

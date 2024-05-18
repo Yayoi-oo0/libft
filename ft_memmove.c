@@ -1,26 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oyayoi <oyayoi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/30 09:37:33 by okamotoyayo       #+#    #+#             */
-/*   Updated: 2024/05/03 12:17:36 by oyayoi           ###   ########.fr       */
+/*   Created: 2024/04/21 11:38:15 by oyayoi            #+#    #+#             */
+/*   Updated: 2024/04/21 16:54:41 by oyayoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	char	*str;
-	int		i;
+	char	*mem1;
+	char	*mem2;
+	size_t	i;
 
-	i = ft_strlen(s1);
-	str = (char *)malloc(sizeof(char) * (i + 1));
-	if (!str)
-		return (NULL);
-	ft_strlcpy(str, s1, i + 1);
-	return (str);
+	mem1 = (char *)dst;
+	mem2 = (char *)src;
+	if (dst < src)
+	{
+		i = 0;
+		while (i < len)
+		{
+			mem1[i] = mem2[i];
+			i++;
+		}
+	}
+	else if (dst > src)
+	{
+		i = len;
+		while (i > 0)
+		{
+			mem1[i - 1] = mem2[i - 1];
+			i--;
+		}
+	}
+	return (dst);
 }

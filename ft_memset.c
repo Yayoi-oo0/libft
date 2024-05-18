@@ -1,26 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oyayoi <oyayoi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/30 09:37:33 by okamotoyayo       #+#    #+#             */
-/*   Updated: 2024/05/03 12:17:36 by oyayoi           ###   ########.fr       */
+/*   Created: 2024/04/16 20:05:00 by oyayoi            #+#    #+#             */
+/*   Updated: 2024/04/17 20:37:58 by oyayoi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	char	*str;
-	int		i;
+	unsigned char	*p;
 
-	i = ft_strlen(s1);
-	str = (char *)malloc(sizeof(char) * (i + 1));
-	if (!str)
-		return (NULL);
-	ft_strlcpy(str, s1, i + 1);
-	return (str);
+	p = (unsigned char *)b;
+	while (len)
+	{
+		*p = (unsigned char)c;
+		p++;
+		len--;
+	}
+	return (b);
 }
+
+// int	main(void)
+// {
+// 	char buf[] = "123456789";
+
+// 	printf("ft_memset:%s\n", ft_memset(buf, 'a', 5));
+// 	printf("memset:%s\n", memset(buf, 'a', 5));
+// 	return (0);
+// }
